@@ -2,6 +2,7 @@
 
 import WebApp from "@twa-dev/sdk";
 import { useEffect, useState } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 
 interface UserData{
   id: number;
@@ -22,7 +23,7 @@ export default function Home() {
   })
 
   return (
-    <main className="p-4">
+    <main >
       {
         userData ? 
         (
@@ -38,7 +39,7 @@ export default function Home() {
           </ul>
           </>
         ) : 
-        <div>Loading...</div>
+        <LoadingScreen/>
       }
     </main>
   );

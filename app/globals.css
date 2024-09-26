@@ -2,3 +2,137 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'Acrom bold';
+  font-style: normal;
+	font-weight: bold;
+  src: local('Acrom bold'),
+  url('./fonts/Acrom-Bold.woff2') format('woff2'), 
+  url('./fonts/Acrom-Bold.woff') format('woff'),
+  url('./fonts/Acrom-Bold.ttf') format('ttf');
+
+}
+
+@font-face {
+  font-family: 'Acrom';
+  font-style: normal;
+	font-weight: 500;
+  src: local('Acrom'),
+  url('/fonts/Acrom-Medium.woff2') format('woff2'), 
+  url('/fonts/Acrom-Medium.woff') format('woff'),
+  url('/fonts/Acrom-Medium.ttf') format('ttf');
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.loading-screen {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Acrom';
+  background-image: url('images/backgroundLoad.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bold-text {
+  font-family: 'Acrom bold';
+}
+
+.logo-container {
+  text-align: center;
+  animation: fadeIn 2s ease-in-out forwards;
+  position: relative;
+}
+
+.logo {
+  width: 150px;
+  opacity: 1; 
+  transform: rotate(-20deg) translate(150px, -70px) scale(1); 
+  animation: logoMoveDiagonal 2s ease forwards; 
+}
+
+.loading-text {
+  position: absolute;
+  width: 200px;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Arial', sans-serif;
+  font-size: 22px;
+  color: white;
+  opacity: 1;
+  animation: textMoveDown 1.75s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes textMoveDown {
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+    top: 30px; 
+  }
+  95% {
+    top: 150px;
+    opacity: 1;
+  }
+  100%{
+    top: 150px;
+    opacity: 1;
+  }
+}
+
+
+@keyframes logoMoveDiagonal {
+  10% {
+    opacity: 1;
+  }
+  70%{
+    transform: rotate(-20deg) translate(150px, -70px) scale(1); 
+    opacity: 1;
+    
+  }
+  85% {
+    transform: rotate(5deg) translate(-15px, 15px) scale(1.5);
+    opacity: 1;
+  }
+  87%{
+    transform: rotate(0deg) translate(0, 0) scale(1.5);
+    opacity: 1;
+  }
+  91%{
+    transform: rotate(1deg) translate(-3px, 3px) scale(1.5);
+    opacity: 1;
+  }
+  95%{
+    transform: rotate(0deg) translate(0, 0) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(0deg) translate(0, 0) scale(1.5);
+    opacity: 1;
+  }
+}
