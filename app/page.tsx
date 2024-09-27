@@ -21,9 +21,9 @@ function haversine(lat1: number, lon1: number, lat2: number, lon2: number) {
   const Δλ = (lon2 - lon1) * (Math.PI / 180);
 
   const a =
-      Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) *
+    Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
   const distance = R * c;
@@ -51,24 +51,24 @@ export default function Home() {
 
     if (!geoPermissionGranted) {
       navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setGeoPermissionGranted(true);
-            const { latitude, longitude } = position.coords;
-            setPosition({ lat: latitude, lon: longitude });
+        (position) => {
+          setGeoPermissionGranted(true);
+          const { latitude, longitude } = position.coords;
+          setPosition({ lat: latitude, lon: longitude });
 
-            const geoWatchId = navigator.geolocation.watchPosition(successCallback, errorCallback, {
-              enableHighAccuracy: true,
-              maximumAge: 10000,
-              timeout: 5000,
-            });
+          const geoWatchId = navigator.geolocation.watchPosition(successCallback, errorCallback, {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 5000,
+          });
 
-            return () => {
-              navigator.geolocation.clearWatch(geoWatchId);
-            };
-          },
-          (error) => {
-            console.error("Геолокация не разрешена", error);
-          }
+          return () => {
+            navigator.geolocation.clearWatch(geoWatchId);
+          };
+        },
+        (error) => {
+          console.error("Геолокация не разрешена", error);
+        }
       );
     }
 
@@ -99,26 +99,29 @@ export default function Home() {
   }, [geoPermissionGranted]);
 
   return (
-      <main>
-        {isLoading ? (
-            <LoadingScreen />
-        ) : (
-            <>
-              <h1 className="text-2xl font-bold mb-4">User Data</h1>
-              <ul>
-                <li>ID: {userData?.id}</li>
-                <li>First Name: {userData?.first_name}</li>
-                <li>Last Name: {userData?.last_name}</li>
-                <li>Username: {userData?.username}</li>
-                <li>Language Code: {userData?.language_code}</li>
-                <li>Is Premium: {userData?.is_premium ? 'Yes' : 'No'}</li>
-              </ul>
+    <main>
+      {isLoading ? (
+        <LoadingScreen />
+      ) : (
+        <>
+          <h1 className="text-2xl font-bold mb-4">User Data</h1>
+          <ul>
+            <li>ID: {userData?.id}</li>
+            <li>First Name: {userData?.first_name}</li>
+            <li>Last Name: {userData?.last_name}</li>
+            <li>Username: {userData?.username}</li>
+            <li>Language Code: {userData?.language_code}</li>
+            <li>Is Premium: {userData?.is_premium ? 'Yes' : 'No'}</li>
+          </ul>
 
-              <div className="mt-6">
-                <h2 className="text-xl font-semibold">Steps Taken: {steps}</h2>
-              </div>
-            </>
-        )}
-      </main>
+          <div className="mt-6">
+            <h2 className="text-xl font-semibold">Current Position:</h2>
+            <p>Latitude: {position?.lat}</p>
+            <p>Longitude: {position?.lon}</p>
+            <h2 className="text-xl font-semibold">Steps Taken: {steps}</h2>
+          </div>
+        </>
+      )}
+    </main>
   );
 }
