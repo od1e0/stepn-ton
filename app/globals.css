@@ -75,7 +75,7 @@ body, html {
   font-size: 22px;
   color: white;
   opacity: 1;
-  animation: textMoveDown 1.75s ease forwards;
+  animation: textMoveDown 1.5s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -91,16 +91,13 @@ body, html {
   10% {
     opacity: 1;
   }
-  75% {
+  87% {
     opacity: 1;
     top: 30px; 
   }
-  95% {
-    top: 150px;
-    opacity: 1;
-  }
+
   100%{
-    top: 150px;
+    top: 160px;
     opacity: 1;
   }
 }
