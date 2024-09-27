@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import WebApp from "@twa-dev/sdk";
 import { useEffect, useState } from "react";
@@ -16,8 +16,12 @@ interface UserData {
 export default function Home() {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true); 
-  
+  const [steps, setSteps] = useState(0); 
+
   useEffect(() => {
+
+    WebApp.ready();
+    WebApp.expand();
 
     if (WebApp.initDataUnsafe.user) {
       setUserData(WebApp.initDataUnsafe.user as UserData);
@@ -27,7 +31,26 @@ export default function Home() {
       setIsLoading(false); 
     }, 5000);
 
-    return () => clearTimeout(timer);
+    const handleMotionEvent = (event: DeviceMotionEvent) => {
+      if (event.acceleration && event.acceleration.x) {
+        const acceleration = event.acceleration.x;
+
+        if (Math.abs(acceleration) > 1.5) {
+          setSteps((prevSteps) => prevSteps + 1);
+        }
+      }
+    };
+
+    if (window.DeviceMotionEvent) {
+      window.addEventListener("devicemotion", handleMotionEvent);
+    } else {
+      console.error("DeviceMotion API не поддерживается вашим устройством.");
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("devicemotion", handleMotionEvent);
+    };
   }, []);
 
   return (
@@ -46,6 +69,10 @@ export default function Home() {
               <li>Language Code: {userData?.language_code}</li>
               <li>Is Premium: {userData?.is_premium ? 'Yes' : 'No'}</li>
             </ul>
+
+            <div className="mt-6">
+              <h2 className="text-xl font-semibold">Steps Taken: {steps}</h2>
+            </div>
           </>
         )
       }
