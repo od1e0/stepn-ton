@@ -19,16 +19,27 @@
   font-style: normal;
 	font-weight: 500;
   src: local('Acrom'),
-  url('/fonts/Acrom-Medium.woff2') format('woff2'), 
-  url('/fonts/Acrom-Medium.woff') format('woff'),
-  url('/fonts/Acrom-Medium.ttf') format('ttf');
+  url('./fonts/Acrom-Medium.woff2') format('woff2'), 
+  url('./fonts/Acrom-Medium.woff') format('woff'),
+  url('./fonts/Acrom-Medium.ttf') format('ttf');
 }
 
 body, html {
   margin: 0;
+  overflow: hidden;
+  height: 100%;
   padding: 0;
   height: 100%;
   width: 100%;
+}
+
+.main-page{
+  background-image: url('images/mainBackground.png');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .loading-screen {
@@ -132,4 +143,69 @@ body, html {
     transform: rotate(0deg) translate(0, 0) scale(1.5);
     opacity: 1;
   }
+}
+
+.app-bar-nav {
+  background-color: #1f2021;
+  justify-content: space-between;
+  max-width: 468px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 7px;
+  pointer-events: all;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+
+.app-bar, .app-bar-nav {
+  display: flex;
+  width: 100%;
+}
+
+.app-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.app-bar-item.is-active, .app-bar-item.router-link-active {
+  background-color: #2592e5;
+  color: #fff;
+}
+
+.app-bar-item {
+  display: flex;
+  font-family: sans-serif;
+  font-weight: bold;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.app-bar-item-image img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.mt-60{
+  margin-top: 60px;
 }

@@ -3,6 +3,10 @@
 import WebApp from "@twa-dev/sdk";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/LoadingScreen";
+import NavBar from "./components/NavBar";
+import ProgressBar from "./components/ProgressBar";
+import Clan from "./components/Clan";
+import settings from "./images/settings.png"
 
 interface UserData {
   id: number;
@@ -99,27 +103,26 @@ export default function Home() {
   }, [geoPermissionGranted]);
 
   return (
-    <main>
+    <main className="main-page">
       {isLoading ? (
         <LoadingScreen />
       ) : (
         <>
-          <h1 className="text-2xl font-bold mb-4">User Data</h1>
-          <ul>
-            <li>ID: {userData?.id}</li>
-            <li>First Name: {userData?.first_name}</li>
-            <li>Last Name: {userData?.last_name}</li>
-            <li>Username: {userData?.username}</li>
-            <li>Language Code: {userData?.language_code}</li>
-            <li>Is Premium: {userData?.is_premium ? 'Yes' : 'No'}</li>
-          </ul>
-
-          <div className="mt-6">
-            <h2 className="text-xl font-semibold">Current Position:</h2>
-            <p>Latitude: {position?.lat}</p>
-            <p>Longitude: {position?.lon}</p>
-            <h2 className="text-xl font-semibold">Steps Taken: {steps}</h2>
+          <div className="flex justify-between items-center w-full p-5">
+            <Clan clanName={'StepN'} />
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10">
+                <img src={settings.src} alt="Settings" className="w-full h-full" />
+              </div>
+              <p className="text-[12px] text-white mt-1 font-sans-serif font-bold">Настройки</p>
+            </div>
           </div>
+
+          <div className="w-4/5 mx-auto mt-60">
+            <ProgressBar progress={25} />
+          </div>
+
+          <NavBar />
         </>
       )}
     </main>

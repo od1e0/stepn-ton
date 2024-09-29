@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'acrom-bold': ['"Acrom bold"', 'sans-serif'],
+        'acrom': ['"Acrom"', 'sans-serif'],
+      },
     },
   },
   plugins: [],
