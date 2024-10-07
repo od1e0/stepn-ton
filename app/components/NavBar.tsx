@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import boosts from '../images/boosts.png';
@@ -12,14 +14,14 @@ export default function NavBar() {
             <div className="app-bar-nav flex justify-between w-full max-w-md p-2">
                 
                 {/* Sneakers */}
-                <Link href="/" className="app-bar-item no-select flex flex-col items-center text-white">
+                <Link href="/sneakers" className="app-bar-item no-select flex flex-col items-center text-white">
                     <div className="app-bar-item-image">
                         <img src={sneakers.src} alt="sneakers" className="w-8 h-8 object-contain" />
                     </div>
                     <p className="text-xs">Sneakers</p>
                 </Link>
 
-                <Link href="/" className="app-bar-item no-select flex flex-col items-center text-white">
+                <Link href="/fake" className="app-bar-item no-select flex flex-col items-center text-white">
                     <div className="app-bar-item-image">
                         <img src={leaderboard.src} alt="leaderboard" className="w-8 h-8 object-contain" />
                     </div>

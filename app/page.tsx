@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import ProgressBar from "./components/ProgressBar";
 import Clan from "./components/Clan";
 import settings from "./images/settings.png"
+import SneakerCard from "./components/SneakerCard";
 
 // interface UserData {
 //   id: number;
@@ -120,6 +121,8 @@ export default function Home() {
           <div className="w-4/5 mx-auto mt-60">
             <ProgressBar progress={25} />
           </div>
+
+          <SneakerCard />
 
           <NavBar />
         </>
