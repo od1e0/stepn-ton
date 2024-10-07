@@ -4,7 +4,7 @@ type SneakerProps = {
   type: string;
   price: number;
   imgSrc: string;
-  rarity?: string; 
+  rarity?: string;
 };
 
 const SneakerCard: React.FC<SneakerProps> = ({ type, price, imgSrc, rarity }) => {

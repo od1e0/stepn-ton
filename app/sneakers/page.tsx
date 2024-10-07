@@ -1,7 +1,5 @@
 'use client';
 
-import WebApp from "@twa-dev/sdk";
-import { useEffect, useState } from "react";
 import SneakersCard from "../components/SneakersCard";
 
 const sneakersData = [
