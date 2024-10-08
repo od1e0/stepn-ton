@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import sneakersImg from '../images/sneakersBoost.png'; 
+import sneakersImg from '../images/sneakersBoost.png';
+import backgroundImg from '../images/backgroundBoosts.png';
+import timer from '../images/time-icon.png';
 
 const SneakerCard: React.FC = () => {
     const [time, setTime] = useState<string>('00:00');
@@ -12,36 +14,34 @@ const SneakerCard: React.FC = () => {
             setTime(`${hours}:${minutes}`);
         }, 1000);
 
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className="relative bg-black p-4 rounded-xl flex items-center justify-between w-[400px] h-[200px]">
-            {/* Таймер */}
-            <div className="absolute top-4 left-4 text-white text-lg flex items-center">
-                <span className="mr-2">⏰</span>
+        <div className="flex flex-col items-center justify-center mt-60 h-[160px]">
+            <div className="top-2 left-2 text-white text-xl flex z-10 mr-300">
+                <img src={timer.src} alt="Timer" className="w-4 mr-1" />
                 <span>{time}</span>
             </div>
+            <div className="relative p-4 rounded-xl flex items-center justify-center w-[400px] h-[150px] border-2 border-green-500"
+                style={{
+                    backgroundImage: `url(${backgroundImg.src})`,
+                    backgroundPosition: 'center',
+                }}>
 
-            {/* Изображение кроссовка */}
-            <div className="flex-1">
-                <img
-                    src={sneakersImg.src}
-                    alt="Sneaker Image"
-                    width={250}
-                    height={250}
-                    className="object-contain"
-                />
-            </div>
+                <div className="relative w-[300px] h-[250px] flex items-center justify-center overflow-visible">
+                    <img
+                        src={sneakersImg.src}
+                        alt="Sneaker Image"
+                        width={350}
+                        height={350}
+                        className="object-contain absolute -top-16"
+                    />
+                </div>
 
-            {/* Текст "Runner" */}
-            <div className="absolute bottom-4 right-4 text-green-500 text-lg">
-                Runner
-            </div>
-
-            {/* Фон для числа x1 */}
-            <div className="absolute bottom-0 right-0 w-full h-full bg-opacity-10 bg-green-500 flex items-center justify-center">
-                <span className="text-2xl text-green-500 opacity-50">x1</span>
+                <div className="absolute bottom-4 right-8 text-green-500 text-lg">
+                    Runner
+                </div>
             </div>
         </div>
     );

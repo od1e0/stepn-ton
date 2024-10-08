@@ -11,7 +11,7 @@ export default function ProgressBar({ progress }: { progress: number }) {
         <div className="relative flex justify-center items-center mt-25" >
             <div className="absolute top-[-50px] text-white text-[30px] font-bold p-2">123 км</div>
 
-            <svg width="400" height="250" viewBox="0 0 400 250">
+            <svg width="400" height="280" viewBox="0 0 400 250">
                 <defs>
                     <linearGradient id="gradient" x1="0%" y1="100%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#F0F0F0" />
