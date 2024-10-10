@@ -108,7 +108,7 @@ export default function Home() {
         <LoadingScreen />
       ) : (
         <>
-          <div className="flex justify-between items-center w-full p-5">
+          <div className="flex justify-between items-center w-full p-2">
             <Clan clanName={'StepN'} />
             <div className="flex flex-col items-center">
               <div className="w-10 h-10">

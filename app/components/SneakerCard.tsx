@@ -18,28 +18,33 @@ const SneakerCard: React.FC = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center mt-60 h-[160px]">
+        <div className="flex flex-col items-center justify-center w-full">
+            {/* Таймер */}
             <div className="top-2 left-2 text-white text-xl flex z-10 mr-300">
                 <img src={timer.src} alt="Timer" className="w-4 mr-1" />
                 <span>{time}</span>
             </div>
-            <div className="relative p-4 rounded-xl flex items-center justify-center w-[400px] h-[150px] border-2 border-green-500"
+
+            {/* Карточка с кроссовками */}
+            <div
+                className="relative p-4 rounded-xl flex items-center justify-center w-[90vw] h-[30vh] sm:w-[80vw] sm:h-[35vh] md:w-[70vw] md:h-[40vh] max-w-[400px] max-h-[120px] border-2 border-green-500"
                 style={{
                     backgroundImage: `url(${backgroundImg.src})`,
                     backgroundPosition: 'center',
-                }}>
-
-                <div className="relative w-[300px] h-[250px] flex items-center justify-center overflow-visible">
+                    backgroundSize: 'cover',
+                }}
+            >
+                {/* Изображение кроссовок */}
+                <div className="relative w-[50vw] h-[30vh] flex items-center justify-center overflow-visible max-w-[600px] max-h-[400px]">
                     <img
                         src={sneakersImg.src}
                         alt="Sneaker Image"
-                        width={350}
-                        height={350}
-                        className="object-contain absolute -top-16"
+                        className="object-contain absolute -top-10"
                     />
                 </div>
 
-                <div className="absolute bottom-4 right-8 text-green-500 text-lg">
+                {/* Текст "Runner" */}
+                <div className="absolute bottom-4 right-4 text-green-500 text-lg sm:text-xl">
                     Runner
                 </div>
             </div>
