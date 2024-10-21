@@ -4,18 +4,33 @@ type SneakerProps = {
   type: string;
   price: number;
   imgSrc: string;
-  rarity?: string;
+  sneakerId: string;
+  backgroundColor: string;
 };
 
-const SneakerCard: React.FC<SneakerProps> = ({ type, price, imgSrc, rarity }) => {
+const SneakerCard: React.FC<SneakerProps> = ({ type, price, imgSrc, sneakerId, backgroundColor }) => {
   return (
-    <div className="border border-gray-300 rounded-lg p-4 text-center bg-white shadow-md hover:shadow-lg transition-shadow">
-      <img src={imgSrc} alt={`${type} sneaker`} className="w-full h-auto mb-4" />
-      <div className="sneaker-info">
-        <h2 className="text-xl font-semibold mb-2">{type}</h2>
-        <p className="text-lg font-medium">{price} $</p>
-        {rarity && <span className="text-sm text-gray-500">{rarity}</span>}
+    <div
+      className="rounded-xl p-1 text-center shadow-md hover:shadow-lg transition-shadow relative"
+      style={{
+        backgroundColor: backgroundColor,
+        border: `2px solid ${type === 'Walker' ? '#00FF00' : '#8B4513'}`,
+        color: 'white',
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      <div className="text-left text-white text-xl font-bold">{type}</div>
+      <div className="text-left text-gray-300 text-[6px]">№{sneakerId}</div>
+
+      <div className="flex-grow flex items-center justify-center">
+        <img src={imgSrc} alt={`${type} sneaker`} className="w-full h-[60%]" />
       </div>
+
+      <div className="text-left mt-auto text-lg font-bold text-white p-1">
+        {price} $
+      </div>
+
     </div>
   );
 };
